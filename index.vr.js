@@ -6,13 +6,14 @@ import {
   Text,
   View,
   Plane,
+  Cylinder,
+  AmbientLight,
 } from 'react-vr';
 
 export default class RaignVR extends React.Component {
   render() {
     return (
       <View>
-        <Pano source={asset('raign_background.jpg')}/>
         <Plane
           dimWidth={10}
           dimHeight={14}
@@ -34,7 +35,7 @@ export default class RaignVR extends React.Component {
           }}
           texture={asset('rachel.png')}
         />
-
+        <AmbientLight intensity={ 1 }  />
         <Plane
           dimWidth={10}
           dimHeight={3}
@@ -45,6 +46,20 @@ export default class RaignVR extends React.Component {
           }}
           texture={asset('logo.png')}
         />
+
+        <Cylinder
+          radiusTop={5}
+          radiusBottom={5}
+          dimHeight={20}
+          segments={100}
+          lit={true}
+          texture={asset('foreground.png')}
+          style={{
+                    opacity:.999,
+                    transform: [{translate: [0, 0, -10]}],
+                  }}
+        />
+
       </View>
     );
   }
