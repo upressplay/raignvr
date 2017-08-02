@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {
   AppRegistry,
@@ -10,6 +11,7 @@ import {
   PointLight,
   Image,
   Sphere,
+  Sound,
 } from 'react-vr';
 
 export default class RaignVR extends React.Component {
@@ -18,135 +20,104 @@ export default class RaignVR extends React.Component {
       <View>
         <Pano source={asset('raign_background.jpg')}lit={true}/>
 
-        <PointLight 
-          angle={ 15  } 
-          distance ={25} 
-          decay ={2} 
-          intensity = {2}
-          penumbra = {50}
-          style={{
-              transform: [{translate: [0, 0, -4]}],
-              color:"#e5d510"
+
+
+
+         <Plane
+            dimWidth={20}
+            dimHeight={33}
+            lit={false}
+            style={{
+              position: 'absolute',
+              opacity:.999,
+              transform: [{translate: [0, 0, -50]}],
             }}
-            wireframe={true}
+            texture={asset('chair.png')}
+          />
+
+          <Plane
+            dimWidth={24}
+            dimHeight={25}
+            lit={false}
+            style={{
+              position: 'absolute',
+              opacity:.999,
+              transform: [{translate: [3, -2, -49.5]}],
+            }}
+            texture={asset('rachel.png')}
           />
 
 
-        <Sphere
-          radius={0.5}
-          widthSegments={20}
-          heightSegments={20}
-          lit={true}
-          style={{
-              transform: [{translate: [0, 0, -5]}],
-              color:"#e5d510"
+          <Plane
+            dimWidth={25}
+            dimHeight={6.5}
+            lit={false}
+            style={{
+              position: 'absolute',
+              opacity:.999,
+              transform: [{translate: [0, 16, -40]}]
             }}
-        />
+            texture={asset('logo.png')}
+          />
 
-        <Image 
-        source={asset('chair.png')}
-          style={{
-            width: 1, height: 1,
-            opacity:.999,
-            transform: [{translate: [0, 2, -10]}],
-          }}/>
-        <Plane
-          dimWidth={10}
-          dimHeight={14}
-          lit={true}
-          style={{
-            opacity:.999,
-            transform: [{translate: [0, 0, -20]}],
-          }}
-          texture={asset('chair.png')}
-        />
-
-        <Plane
-          dimWidth={10}
-          dimHeight={14}
-          lit={true}
-          style={{
-            opacity:.999,
-            transform: [{translate: [-10, 0, -20]}],
-          }}
-          texture={asset('chair.png')}
-        />
-
-        <Plane
-          dimWidth={10}
-          dimHeight={14}
-          lit={true}
-          style={{
-            opacity:.999,
-            transform: [{translate: [10, 0, -20]}],
-          }}
-          texture={asset('chair.png')}
-        />
-
-        <Plane
-          dimWidth={9}
-          dimHeight={10}
-          lit={true}
-          style={{
-            opacity:.999,
-            transform: [{translate: [1, -1, -19]}],
-          }}
-          texture={asset('rachel.png')}
-        />
         
-        <Plane
-          dimWidth={10}
-          dimHeight={3}
-          lit={true}
-          style={{
-            opacity:.999,
-            transform: [{translate: [0, 7, -17]}],
-          }}
-          texture={asset('logo.png')}
-        />
+         <Sphere
+            radius={0.5}
+            widthSegments={20}
+            heightSegments={20}
+            lit={true}
+            style={{
+               position: 'absolute', 
+               transform: [{translate: [10, 1, -30]}],
+               color:"#e5d510"
+               }}
+         >
 
-        <Cylinder
-          radiusTop={5}
+         </Sphere>
+            <Sound source={{
+                  mp3: asset('audio/bowls.mp3'),
+                  autoPlay:true,
+                  loop:true,
+                  volume:2
+               }} />
+         <PointLight 
+            angle={ 15  } 
+            distance ={25} 
+            decay ={2} 
+            intensity = {3}
+            penumbra = {50}
+            color="#e5d510"
+            style={{
+               position: 'absolute', 
+               transform: [{translate: [10, 1, -29]}],
+               color:"#e5d510"
+               }}
+            wireframe={true}
+            />
+
+         <Text
+            lit={true}
+            style={{
+               position: 'absolute',
+               fontSize: 1,
+               textAlign: 'center',
+               textAlignVertical: 'center',
+               transform: [{translate: [9.0, .5, -30]}],
+               }}>
+            tracks
+         </Text>
+
+         <Cylinder
+          radiusTop={12}
           radiusBottom={5}
-          dimHeight={20}
-          segments={100}
-          lit={true}
-          side={'DoubleSide'}
+          dimHeight={35}
+          segments={50}
           texture={asset('foreground.png')}
           style={{
                     opacity:.999,
-                    transform: [{translate: [0, 0, 0]}],
+                    transform: [{translate: [0, -3, 0]}, {scaleX:-1}],
                   }}
         />
-
-        <Image
-          style={{
-            opacity:.999,
-            transform: [{translate: [0, 0, -20]}],
-          }}
-          source={asset('chair.png')}
-        />
-        <Plane
-          dimWidth={10}
-          dimHeight={14}
-          lit={true}
-          style={{
-            opacity:.999,
-            transform: [{translate: [0, 0, -20]}],
-          }}
-          texture={asset('chair.png')}
-        />
-
-        <Text
-          style={{
-            fontSize: 0.2,
-            layoutOrigin: [0, 0.5],
-            textAlign: 'center',
-            textAlignVertical: 'center',
-            transform: [{translate: [0, 1, -1]}],
-          }}>
-          View Tracks
-        </Text>
 
       </View>
     );
