@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Nav from './components/Nav.js';
 import {
   AppRegistry,
   asset,
@@ -19,9 +20,6 @@ export default class RaignVR extends React.Component {
     return (
       <View>
         <Pano source={asset('raign_background.jpg')}lit={true}/>
-
-
-
 
          <Plane
             dimWidth={20}
@@ -95,17 +93,7 @@ export default class RaignVR extends React.Component {
             wireframe={true}
             />
 
-         <Text
-            lit={true}
-            style={{
-               position: 'absolute',
-               fontSize: 1,
-               textAlign: 'center',
-               textAlignVertical: 'center',
-               transform: [{translate: [9.0, .5, -30]}],
-               }}>
-            tracks
-         </Text>
+
 
          <Cylinder
           radiusTop={12}
@@ -118,8 +106,9 @@ export default class RaignVR extends React.Component {
                     transform: [{translate: [0, -3, 0]}, {scaleX:-1}],
                   }}
         />
-
+        <Nav/>
       </View>
+
     );
   }
 };
