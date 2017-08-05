@@ -39,9 +39,7 @@ function TrackBtn(props) {
   return (
    <VrButton 
       style={{ margin: 0.05, height: 0.2}}
-      onClickSound={{
-         mp3: asset(props.mp3),
-      }}
+      
    >
         <Text style={{fontSize: 0.2, textAlign: 'center', color: 'black'}}>{props.title}</Text>
    </VrButton>
